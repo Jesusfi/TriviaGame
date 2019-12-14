@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">QuizGame</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="correct">Correct!</string>
+
+
+
+    <string-array name="category_name">
+        <item>Any</item>
+        <item>General Knowledge</item>
+        <item>Books</item>
+        <item>Animals</item>
+        <item>Arts</item>
+    </string-array>
+</resources>

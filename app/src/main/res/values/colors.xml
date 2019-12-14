@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#8e24aa</color>
+    <color name="colorPrimaryDark">#5C007A</color>
+    <color name="colorPrimaryLight">#c158dc</color>
+
+    <color name="colorAccent">#24AA8D</color>
+    <color name="colorAccentDark">#007a60</color>
+    <color name="colorAccentLight">#62dcbd</color>
+
+    <color name="primaryTextColor">#FFFFFF</color>
+    <color name="secondaryTextColor">#000000</color>
+
+    <color name="selectedAnswer">#00BCD4</color>
+    <color name="pressed">#03A9F4</color>
+    <color name="unselectedAnswer">#2196F3</color>
+    <color name="possibleAnswerTextColor">@color/white</color>
+
+    <color name="correctAnswerColor">#00e18a</color>
+    <color name="incorrectAnswerColor">#fa0060</color>
+
+    <color name="white">#FFFFFF</color>
+</resources>

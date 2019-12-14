@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="java.util.List" />
+
+        <variable
+            name="answers"
+            type="List&lt;String>" />
+
+        <variable
+            name="question"
+            type="String" />
+
+        <variable
+            name="triviaGame"
+            type="com.example.quizgame.TriviaGame" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimary"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        tools:context=".GameFragment">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <TextView
+                    android:id="@+id/question_textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:minHeight="150dp"
+                    android:text="@{triviaGame.currentQuestionString}"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="24sp"
+                    tools:text="Who was the first man to walk on the moon?" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView">
+
+
+            <RadioButton
+                tools:text="Answer One"
+                android:id="@+id/answer_one"
+                style="@style/customRadioStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{triviaGame.listOfShuffledPossibleAnswers[0]}" />
+
+            <RadioButton
+                android:id="@+id/answer_two"
+                style="@style/customRadioStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{triviaGame.listOfShuffledPossibleAnswers[1]}" />
+
+            <RadioButton
+                android:id="@+id/answer_three"
+                style="@style/customRadioStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{triviaGame.listOfShuffledPossibleAnswers[2]}" />
+
+            <RadioButton
+                android:id="@+id/answer_four"
+                style="@style/customRadioStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{triviaGame.listOfShuffledPossibleAnswers[3]}" />
+        </RadioGroup>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
