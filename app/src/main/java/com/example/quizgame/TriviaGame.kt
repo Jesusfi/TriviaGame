@@ -2,7 +2,6 @@ package com.example.quizgame
 
 import android.content.Context
 import android.media.MediaPlayer
-import android.util.Log
 import androidx.core.text.HtmlCompat
 import com.example.quizgame.Models.TriviaQuestion
 
@@ -50,10 +49,6 @@ class TriviaGame(
     }
 
     fun getListOfShuffledPossibleAnswers(): List<String> {
-        /*   return shuffleAndFormat(
-               getCurrentTriviaQuestion().incorrect_answers,
-               getCurrentTriviaQuestion().correct_answer
-           )*/
         return shuffledPossibleAnswers
     }
 

@@ -13,7 +13,6 @@ import android.widget.RadioButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.android.volley.Request
 import com.android.volley.Response
