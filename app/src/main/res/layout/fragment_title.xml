@@ -11,9 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorPrimary"
-        tools:context=".TitleFragment">
-
-
+        tools:context=".screens.title.TitleFragment">
+        
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
@@ -22,7 +21,6 @@
             android:layout_marginTop="24dp"
             android:gravity="center_vertical"
             android:text="Trivia Category"
-            android:textAlignment="viewStart"
             android:textColor="@color/primaryTextColor"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -79,19 +77,19 @@
             app:layout_constraintTop_toBottomOf="@+id/toggleButton2" />
 
         <ToggleButton
-            android:textOn="Timer On"
-            android:textOff="Timer Off"
             android:id="@+id/toggleButton2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
+            android:background="@drawable/button_toggle"
             android:text="ToggleButton"
             android:textAllCaps="false"
             android:textColor="@color/primaryTextColor"
+            android:textOff="Timer Off"
+            android:textOn="Timer On"
             android:textSize="20sp"
-            android:background="@drawable/button_toggle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView4" />

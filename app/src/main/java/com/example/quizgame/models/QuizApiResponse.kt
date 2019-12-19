@@ -1,4 +1,4 @@
-package com.example.quizgame.Models
+package com.example.quizgame.models
 
 data class QuizApiResponse(
     val response_code: Int,

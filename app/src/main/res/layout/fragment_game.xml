@@ -6,26 +6,25 @@
     <data>
 
         <import type="java.util.List" />
+        <import type="com.example.quizgame.utils.GameFormatingUtils" />
 
         <variable
-            name="answers"
+            name="triviaQuestion"
+            type="com.example.quizgame.models.TriviaQuestion" />
+
+        <variable
+            name="possibleAnswers"
             type="List&lt;String>" />
 
-        <variable
-            name="question"
-            type="String" />
 
-        <variable
-            name="triviaGame"
-            type="com.example.quizgame.TriviaGame" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:background="@color/colorPrimary"
         android:layout_height="match_parent"
         android:animateLayoutChanges="true"
-        tools:context=".GameFragment">
+        android:background="@color/colorPrimary"
+        tools:context=".screens.game.GameFragment">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
@@ -49,7 +48,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:minHeight="150dp"
-                    android:text="@{triviaGame.currentQuestionString}"
+                    android:text="@{GameFormatingUtils.formatString(triviaQuestion.question)}"
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="24sp"
@@ -70,33 +69,33 @@
 
 
             <RadioButton
-                tools:text="Answer One"
                 android:id="@+id/answer_one"
                 style="@style/customRadioStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{triviaGame.listOfShuffledPossibleAnswers[0]}" />
+                android:text="@{GameFormatingUtils.formatString(possibleAnswers[0])}"
+                tools:text="Answer One" />
 
             <RadioButton
                 android:id="@+id/answer_two"
                 style="@style/customRadioStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{triviaGame.listOfShuffledPossibleAnswers[1]}" />
+                android:text="@{GameFormatingUtils.formatString(possibleAnswers[1])}" />
 
             <RadioButton
                 android:id="@+id/answer_three"
                 style="@style/customRadioStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{triviaGame.listOfShuffledPossibleAnswers[2]}" />
+                android:text="@{GameFormatingUtils.formatString(possibleAnswers[2])}" />
 
             <RadioButton
                 android:id="@+id/answer_four"
                 style="@style/customRadioStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{triviaGame.listOfShuffledPossibleAnswers[3]}" />
+                android:text="@{GameFormatingUtils.formatString(possibleAnswers[3])}" />
         </RadioGroup>
 
         <ProgressBar

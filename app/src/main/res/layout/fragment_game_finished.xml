@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
-            tools:context=".GameFinished">
+            tools:context=".screens.gameOver.GameFinished">
 
             <Button
                 android:id="@+id/play_again_button"
