@@ -6,8 +6,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.quizgame.models.QuestionResult
 import com.example.quizgame.models.TriviaQuestion
-import com.example.quizgame.utils.GameFormatingUtils
-import com.example.quizgame.utils.GameFormatingUtils.formatString
+import com.example.quizgame.utils.GameUtils
+import com.example.quizgame.utils.GameUtils.formatHtmlStringForDisplay
 import timber.log.Timber
 
 class TriviaGameViewModel(
@@ -30,24 +30,24 @@ class TriviaGameViewModel(
     private lateinit var timer: CountDownTimer
 
     // Properties
-    private val hasMoreQuestions: Boolean
-        get() = currentIndex < triviaQuestionList.size
+//    private val hasMoreQuestions: Boolean
+//        get() = currentIndex < triviaQuestionList.size
 
     // Live Data Objects
     private val _currentQuestion = MutableLiveData<TriviaQuestion>()
     val currentQuestion: LiveData<TriviaQuestion>
         get() = _currentQuestion
 
-    private val _currentSufffledList = MutableLiveData<List<String>>()
+    private val _currentShuffledList = MutableLiveData<List<String>>()
     val currentShuffledList: LiveData<List<String>>
-        get() = _currentSufffledList
+        get() = _currentShuffledList
 
     private val _onGameOverEvent = MutableLiveData<Boolean>()
     val onGameOverEvent: LiveData<Boolean>
         get() = _onGameOverEvent
 
     private val _playerDecisionResult = MutableLiveData<Pair<Boolean, Int>>()
-    val playerDescisionResult: LiveData<Pair<Boolean, Int>>
+    val playerDecisionResult: LiveData<Pair<Boolean, Int>>
         get() = _playerDecisionResult
 
     private val _timeLeft = MutableLiveData<Long>()
@@ -57,9 +57,9 @@ class TriviaGameViewModel(
     init {
         _onGameOverEvent.value = false
         nextQuestion()
-        triviaQuestionList.forEach {
-            Timber.d(it.question)
-        }
+//        triviaQuestionList.forEach {
+//            Timber.d(it.question)
+//        }
 
         Timber.d("Timer Enabled: ${hasTimerEnabled}")
 
@@ -79,7 +79,7 @@ class TriviaGameViewModel(
     }
 
     fun nextQuestion() {
-        if (hasMoreQuestions) {
+        if (currentIndex < triviaQuestionList.size) {
             _currentQuestion.value = triviaQuestionList[currentIndex]
             shuffledList()
             currentIndex++
@@ -90,7 +90,7 @@ class TriviaGameViewModel(
     }
 
     fun onUserAnswer(userAnswer: String) {
-        val correctAnswer = GameFormatingUtils.formatString(_currentQuestion.value?.correct_answer)
+        val correctAnswer = GameUtils.formatHtmlStringForDisplay(_currentQuestion.value?.correct_answer)
         if (userAnswer.equals(correctAnswer)) {
             _numberUserAnsweredCorrectly++
             _playerDecisionResult.value = Pair(true, findIndexWithCorrectAnswer())
@@ -105,16 +105,16 @@ class TriviaGameViewModel(
 
     private fun updateQuestionsPlayerAnswered(userAnswer: String) {
         val questionResult = QuestionResult(
-            formatString(_currentQuestion.value?.question!!),
-            formatString(_currentQuestion.value?.correct_answer!!),
+            formatHtmlStringForDisplay(_currentQuestion.value?.question!!),
+            formatHtmlStringForDisplay(_currentQuestion.value?.correct_answer!!),
             userAnswer
         )
         _listOfAnswersPlayerReached.add(questionResult)
     }
 
     private fun findIndexWithCorrectAnswer(): Int {
-        for (i in _currentSufffledList.value?.indices!!) {
-            if (_currentQuestion.value?.correct_answer.equals(_currentSufffledList.value?.get(i))) {
+        for (i in _currentShuffledList.value?.indices!!) {
+            if (_currentQuestion.value?.correct_answer.equals(_currentShuffledList.value?.get(i))) {
                 return i;
             }
         }
@@ -122,13 +122,13 @@ class TriviaGameViewModel(
     }
 
     private fun shuffledList() {
-        val possibleAnswers: MutableList<String>? =
-            _currentQuestion.value?.incorrect_answers?.toMutableList()
+        val possibleAnswers: MutableList<String> =
+            _currentQuestion.value?.incorrect_answers!!.toMutableList()
 
-        possibleAnswers?.add((_currentQuestion.value)?.correct_answer.toString())
-        possibleAnswers?.shuffle()
+        possibleAnswers.add((_currentQuestion.value)?.correct_answer.toString())
+        possibleAnswers.shuffle()
 
-        _currentSufffledList.value = possibleAnswers
+        _currentShuffledList.value = possibleAnswers
     }
 
     private fun gameOver() {

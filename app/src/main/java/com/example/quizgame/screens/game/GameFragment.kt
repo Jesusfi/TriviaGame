@@ -26,10 +26,6 @@ import com.example.quizgame.databinding.FragmentGameBinding
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_game.*
 
-
-/**
- * A simple [Fragment] subclass.
- */
 class GameFragment : Fragment() {
 
     private lateinit var binding: FragmentGameBinding
@@ -98,14 +94,14 @@ class GameFragment : Fragment() {
     }
 
     private fun setObservers() {
-        viewModel.currentQuestion.observe(this, Observer { triviaQuesiton ->
-            binding.triviaQuestion = triviaQuesiton
+        viewModel.currentQuestion.observe(this, Observer { triviaQuestion ->
+            binding.triviaQuestion = triviaQuestion
             resetRadioButtonBackground()
         })
         viewModel.currentShuffledList.observe(this, Observer {
             binding.possibleAnswers = it
         })
-        viewModel.playerDescisionResult.observe(this, Observer {
+        viewModel.playerDecisionResult.observe(this, Observer {
             val isUserCorrect = it.first
             val indexOfCorrectAnswer = it.second
 
@@ -167,7 +163,7 @@ class GameFragment : Fragment() {
         }
     }
 
-
+// TODO Change function to use coroutines
     private fun loadQuestions(
         url: String,
         listener: TriviaApiListener,
@@ -175,7 +171,7 @@ class GameFragment : Fragment() {
     ) {
         val queue = Volley.newRequestQueue(context)
 
-        // Request a string response from the provided 9O8OL    URL.
+        // Request a string response from the provided URL.
         val stringRequest = StringRequest(
             Request.Method.GET, url,
             Response.Listener<String> { response ->

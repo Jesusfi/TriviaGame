@@ -6,7 +6,7 @@
     <data>
 
         <import type="java.util.List" />
-        <import type="com.example.quizgame.utils.GameFormatingUtils" />
+        <import type="com.example.quizgame.utils.GameUtils" />
 
         <variable
             name="triviaQuestion"
@@ -48,7 +48,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:minHeight="150dp"
-                    android:text="@{GameFormatingUtils.formatString(triviaQuestion.question)}"
+                    android:text="@{GameUtils.formatHtmlStringForDisplay(triviaQuestion.question)}"
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="24sp"
@@ -73,7 +73,7 @@
                 style="@style/customRadioStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{GameFormatingUtils.formatString(possibleAnswers[0])}"
+                android:text="@{GameUtils.formatHtmlStringForDisplay(possibleAnswers[0])}"
                 tools:text="Answer One" />
 
             <RadioButton
@@ -81,21 +81,21 @@
                 style="@style/customRadioStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{GameFormatingUtils.formatString(possibleAnswers[1])}" />
+                android:text="@{GameUtils.formatHtmlStringForDisplay(possibleAnswers[1])}" />
 
             <RadioButton
                 android:id="@+id/answer_three"
                 style="@style/customRadioStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{GameFormatingUtils.formatString(possibleAnswers[2])}" />
+                android:text="@{GameUtils.formatHtmlStringForDisplay(possibleAnswers[2])}" />
 
             <RadioButton
                 android:id="@+id/answer_four"
                 style="@style/customRadioStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{GameFormatingUtils.formatString(possibleAnswers[3])}" />
+                android:text="@{GameUtils.formatHtmlStringForDisplay(possibleAnswers[3])}" />
         </RadioGroup>
 
         <ProgressBar
