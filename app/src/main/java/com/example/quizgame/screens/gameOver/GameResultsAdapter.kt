@@ -1,4 +1,4 @@
-package com.example.quizgame
+package com.example.quizgame.screens.gameOver
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,11 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.quizgame.Models.Results
+import com.example.quizgame.R
+import com.example.quizgame.models.QuestionResult
 import kotlinx.android.synthetic.main.rv_results.view.*
 
 class GameResultsAdapter(
-    private val items: ArrayList<Results>,
+    private val items: Array<QuestionResult>,
     private val context: Context?
 ) : RecyclerView.Adapter<GameResultsAdapter.ViewHolder>() {
 
@@ -22,7 +23,9 @@ class GameResultsAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.rv_results, parent, false)
-        return ViewHolder(view)
+        return ViewHolder(
+            view
+        )
     }
 
     override fun getItemCount(): Int {

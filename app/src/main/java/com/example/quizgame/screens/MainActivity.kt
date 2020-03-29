@@ -1,7 +1,8 @@
-package com.example.quizgame
+package com.example.quizgame.screens
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.quizgame.R
 
 class MainActivity : AppCompatActivity() {
 

@@ -1,4 +1,4 @@
-package com.example.quizgame
+package com.example.quizgame.screens.title
 
 
 import android.os.Bundle
@@ -9,8 +9,8 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import com.example.quizgame.R
 import com.example.quizgame.databinding.FragmentTitleBinding
 
 /**
@@ -24,7 +24,8 @@ class TitleFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_title, container, false)
+        binding = DataBindingUtil.inflate(inflater,
+            R.layout.fragment_title, container, false)
 
         (activity as AppCompatActivity).supportActionBar?.title = ""
 

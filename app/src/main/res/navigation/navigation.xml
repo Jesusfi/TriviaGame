@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/gameFragment"
-        android:name="com.example.quizgame.GameFragment"
+        android:name="com.example.quizgame.screens.game.GameFragment"
         android:label="fragment_game"
         tools:layout="@layout/fragment_game" >
         <action
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/titleFragment"
-        android:name="com.example.quizgame.TitleFragment"
+        android:name="com.example.quizgame.screens.title.TitleFragment"
         android:label="fragment_title"
         tools:layout="@layout/fragment_title" >
         <action
@@ -40,21 +40,9 @@
     </fragment>
     <fragment
         android:id="@+id/gameFinished"
-        android:name="com.example.quizgame.GameFinished"
+        android:name="com.example.quizgame.screens.gameOver.GameFinished"
         android:label="fragment_game_finished"
         tools:layout="@layout/fragment_game_finished" >
-        <argument
-            android:name="numberAnsweredCorrectly"
-            app:argType="integer" />
-        <argument
-            android:name="questionsReached"
-            app:argType="string[]" />
-        <argument
-            android:name="correctAnswersList"
-            app:argType="string[]" />
-        <argument
-            android:name="userAnswersList"
-            app:argType="string[]" />
         <action
             android:id="@+id/action_gameFinished_to_titleFragment"
             app:destination="@id/titleFragment"
@@ -64,5 +52,11 @@
             app:popExitAnim="@anim/slide_out_right"
             app:popUpTo="@+id/titleFragment"
             app:popUpToInclusive="true" />
+        <argument
+            android:name="questionsPlayerAnswered"
+            app:argType="com.example.quizgame.models.QuestionResult[]" />
+        <argument
+            android:name="numberCorrectlyAnswered"
+            app:argType="integer" />
     </fragment>
 </navigation>
